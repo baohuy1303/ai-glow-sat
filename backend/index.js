@@ -1,17 +1,15 @@
 const express = require('express');
-const admin = require('firebase-admin');
-const bodyParser = require('body-parser');
+const cors = require('cors');
+const userRouter = require('./routes/UserRoutes');
 
+require("dotenv").config();
 const app = express();
 const PORT = 3000;
 
-var admin = require("firebase-admin");
+app.use(express.json());
+app.use(cors());
 
-var serviceAccount = require('./serviceAccountKey.json');
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
+app.use("/api/user", userRouter);
 
 app.listen(PORT, ()=>{
     console.log(`Server running on ${PORT}`);
