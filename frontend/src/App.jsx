@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import './index.css';
 import Login from './pages/Login.jsx';
 import { AuthProvider } from './contexts/AuthContext.jsx';
-import Dashboard from './pages/Dashboard.jsx';
+import Dashboard from './pages/UserDashboard.jsx';
 import AdminDashboard from './pages/Admin/AdminDashboard.jsx';
 import UserLayout from './layouts/UserLayout.jsx';
 import RoleRoutesCheck from './helper/RoleRoutesCheck.jsx';

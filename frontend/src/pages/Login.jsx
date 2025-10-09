@@ -41,6 +41,9 @@ function Login() {
             setError(error.message);
         } finally {
             setLoading(false);
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
         }
     }
 
@@ -52,6 +55,8 @@ function Login() {
             setError(error.message);
         } finally {
             setLoading(false);
+            setEmail('');
+            setPassword('');
         }
     }
 
