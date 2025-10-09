@@ -6,6 +6,7 @@ function Dashboard() {
     const { currentUser, logout } = useAuth();
     const navigate = useNavigate();
     const [error, setError] = useState('');
+    
     async function handleLogout() {
         try {
         await logout();
