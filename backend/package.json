@@ -1,8 +1,18 @@
 {
   "dependencies": {
     "body-parser": "^2.2.0",
+<<<<<<< HEAD
     "express": "^5.1.0",
     "firebase-admin": "^13.5.0"
+=======
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "firebase": "^12.3.0",
+    "firebase-admin": "^13.5.0",
+    "nodemon": "^3.1.10",
+    "zod": "^4.1.12"
+>>>>>>> 9467d701180d4b9f13eb64983acb1df9a8816cd7
   },
   "scripts": {
     "start": "node index.js",
