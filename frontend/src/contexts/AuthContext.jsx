@@ -6,6 +6,8 @@ import {
     onAuthStateChanged,
     signOut,
     signInWithPopup,
+    sendEmailVerification,
+    reload,
 } from 'firebase/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { sendPasswordResetEmail } from 'firebase/auth';
@@ -22,15 +24,19 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [role, setRole] = useState(null);
+    const [emailVerified, setEmailVerified] = useState(false);
 
     async function signup(email, password) {
-        createUserWithEmailAndPassword(auth, email, password).then(
-            (credential) => {
-                setDoc(doc(db, 'users', credential.user.uid), {
-                    role: 'user',
-                });
-            }
-        );
+        try {
+            const credential = await createUserWithEmailAndPassword(auth, email, password);
+            await setDoc(doc(db, 'users', credential.user.uid), {
+                role: 'user',
+            });
+            await sendEmailVerification(credential.user);
+            return credential;
+        } catch (error) {
+            throw error;
+        }
     }
 
     async function login(email, password) {
@@ -51,6 +57,21 @@ export function AuthProvider({ children }) {
         await sendPasswordResetEmail(auth, email);
     }
 
+    async function resendVerificationEmail() {
+        if (currentUser && !currentUser.emailVerified) {
+            await sendEmailVerification(currentUser);
+        }
+    }
+
+    async function checkEmailVerification() {
+        if (currentUser) {
+            await reload(currentUser);
+            setEmailVerified(currentUser.emailVerified);
+            return currentUser.emailVerified;
+        }
+        return false;
+    }
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
             setCurrentUser(currentUser);
@@ -65,12 +86,16 @@ export function AuthProvider({ children }) {
                     } else {
                         setRole('user'); // default role
                     }
+                    // Firebase automatically tracks email verification status
+                    setEmailVerified(currentUser.emailVerified);
                 } catch (error) {
                     console.error('Error fetching user role:', error);
                     setRole('user'); // default role on error
+                    setEmailVerified(false);
                 }
             } else {
                 setRole(null);
+                setEmailVerified(false);
             }
             setLoading(false);
         });
@@ -84,7 +109,10 @@ export function AuthProvider({ children }) {
         logout,
         loginWithGoogle,
         resetPassword,
+        resendVerificationEmail,
+        checkEmailVerification,
         role,
+        emailVerified,
     };
 
     return (

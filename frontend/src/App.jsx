@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import './index.css';
 import Login from './pages/Login.jsx';
+import EmailVerification from './pages/EmailVerification.jsx';
 import { AuthProvider } from './contexts/AuthContext.jsx';
 import Dashboard from './pages/UserDashboard.jsx';
 import AdminDashboard from './pages/Admin/AdminDashboard.jsx';
@@ -14,7 +15,9 @@ function App() {
                 <Routes>
                     {/* login form */}
                     <Route path="/login" element={<Login />} />
-                    {/* dashboard */}
+                    {/* email verification */}
+                    <Route path="/verify-email" element={<EmailVerification />} />
+                    {/* User branch */}
                     <Route
                         path="/user"
                         element={
@@ -26,7 +29,7 @@ function App() {
                         <Route index element={<Dashboard />} />
                     </Route>
 
-                    {/* admin dashboard */}
+                    {/* Admin branch */}
                     <Route
                         path="/admin"
                         element={
@@ -38,7 +41,7 @@ function App() {
                         <Route index element={<AdminDashboard />} />
                     </Route>
 
-                    {/* Default route - redirect to login */}
+                    {/* Default route - redirect to login for now*/}
                     <Route path="/" element={<Navigate to="/login" replace />} />
                 </Routes>
             </AuthProvider>

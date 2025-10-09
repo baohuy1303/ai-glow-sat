@@ -7,21 +7,27 @@ function Login() {
     const [password, setPassword] = useState('');
     const [register, setRegister] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState('');
-    const { signup, login, currentUser, role, loginWithGoogle } = useAuth();
+    const { signup, login, currentUser, role, loginWithGoogle, emailVerified } = useAuth();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    // Handle navigation based on role after login
+    // Handle navigation based on role and email verification after login
     useEffect(() => {
         if (currentUser && role) {
+            // Check if email is verified
+            if (!emailVerified) {
+                navigate('/verify-email');
+                return;
+            }
+            
             if (role === 'admin') {
                 navigate('/admin');
             } else {
                 navigate('/user');
             }
         }
-    }, [currentUser, role, navigate]);
+    }, [currentUser, role, emailVerified, navigate]);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -33,15 +39,18 @@ function Login() {
         try {
             if (register && password === confirmPassword) {
                 await signup(email, password);
+                setPassword('');
+                setConfirmPassword('');
                 setRegister(false);
+                // After signup, user will be redirected to email verification
             } else {
                 await login(email, password);
+                // Navigation will be handled by useEffect based on email verification status
             }
         } catch (error) {
             setError(error.message);
         } finally {
             setLoading(false);
-            setEmail('');
             setPassword('');
             setConfirmPassword('');
         }
@@ -66,6 +75,19 @@ function Login() {
                 <h1 className="text-2xl font-bold">
                     {register ? 'Register' : 'Login'}
                 </h1>
+                {currentUser && !emailVerified && (
+                    <div className="text-center">
+                        <p className="text-sm text-yellow-500 mb-2">
+                            Please verify your email to continue
+                        </p>
+                        <button
+                            onClick={() => navigate('/verify-email')}
+                            className="text-sm text-blue-500 hover:text-blue-700 underline"
+                        >
+                            Go to Email Verification
+                        </button>
+                    </div>
+                )}
                 {currentUser && (
                     <p className="text-sm text-green-500">
                         {currentUser.email}

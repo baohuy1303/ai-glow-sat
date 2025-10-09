@@ -22,9 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-<<<<<<< HEAD
-=======
 
 certs.json
 .env
->>>>>>> 9467d701180d4b9f13eb64983acb1df9a8816cd7

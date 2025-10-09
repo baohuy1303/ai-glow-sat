@@ -13,6 +13,10 @@ function RoleRoutesCheck({ children, requiredRole }) {
         return <Navigate to="/login" replace />;
     }
 
+    if (!currentUser.emailVerified) {
+        return <Navigate to="/verify-email" replace />;
+    }
+    
     // Wait for role to be loaded
     if (role === null) {
         return <div>Loading user permissions...</div>;
