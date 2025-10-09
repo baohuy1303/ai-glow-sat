@@ -10,7 +10,6 @@ import AdminLayout from './layouts/AdminLayout.jsx';
 
 function App() {
     return (
-        <BrowserRouter>
             <AuthProvider>
                 <Routes>
                     {/* login form */}
@@ -43,7 +42,7 @@ function App() {
                     <Route path="/" element={<Navigate to="/login" replace />} />
                 </Routes>
             </AuthProvider>
-        </BrowserRouter>
+
     );
 }
 

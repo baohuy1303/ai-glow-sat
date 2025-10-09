@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 
-export const NavBar = ({menuOpen, setMenuOpen}) => {
+export default function NavBar({menuOpen, setMenuOpen}) {
     useEffect(() => {
         document.body.style.overflowY = menuOpen ? "hidden" : "";
     }, [menuOpen]);
