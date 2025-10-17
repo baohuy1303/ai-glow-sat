@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import logo from "../assets/aiglow_logo.png";
+
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -71,8 +73,14 @@ function Login() {
 
     return (
         <>
-            <div className="flex flex-col items-center justify-center h-screen w-screen gap-10">
-                <h1 className="text-2xl font-bold">
+            <div className="flex flex-col items-center justify-center h-screen w-screen gap-10 bg-gradient-to-b from-[#d8f405] to-[#4e0bba] text-white px-4">
+            <div className="flex justify-center items-center px-20 gap-4">
+            <img src={logo} alt="Login Background" className="w-13 max-w-md rounded shadow-lg"></img>
+            <h1 className="text-2xl font-bold text-[#4e0bba]">
+                    ai glow
+                </h1>
+            </div>
+                <h1 className="text-xl font-bold">
                     {register ? 'Register' : 'Login'}
                 </h1>
                 {currentUser && !emailVerified && (
@@ -121,12 +129,12 @@ function Login() {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
                     )}
-                    <button disabled={loading} type="submit">
+                    <button disabled={loading} type="submit" classnName="text-[#4e0bba]">
                         {register ? 'Register' : 'Login'}{' '}
                         {loading && <span className="animate-spin">...</span>}
                     </button>
                     <p
-                        className="text-sm text-gray-500 hover:cursor-pointer hover:text-blue-500"
+                        className="text-sm text-black hover:cursor-pointer hover:text-blue-500"
                         onClick={() => setRegister(!register)}
                     >
                         {register
@@ -134,9 +142,13 @@ function Login() {
                             : "Don't have an account?"}
                     </p>
                 </form>
-                <button onClick={handleLoginWithGoogle}>
-                    Login with Google
+                <button
+                onClick={handleLoginWithGoogle}
+                className="gap-3 bg-white text-[#4e0bba] font-bold py-2 px-5 rounded-md shadow-md hover:bg-[#4e0bba] !important hover:text-white transition-colors duration-300"
+                >
+                Login with Google
                 </button>
+
             </div>
         </>
     );

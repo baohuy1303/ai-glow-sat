@@ -8,6 +8,7 @@ import AdminDashboard from './pages/Admin/AdminDashboard.jsx';
 import UserLayout from './layouts/UserLayout.jsx';
 import RoleRoutesCheck from './helper/RoleRoutesCheck.jsx';
 import AdminLayout from './layouts/AdminLayout.jsx';
+import Home from "./pages/Home.jsx";
 
 function App() {
     return (
