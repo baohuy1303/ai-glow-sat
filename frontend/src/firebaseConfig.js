@@ -63,3 +63,25 @@ export const db = {
   
   export class GoogleAuthProvider {}
   
+
+// real config - comment the part above and uncomment this when you add
+// import { initializeApp } from "firebase/app";
+// import { getAuth } from "firebase/auth";
+// import { getFirestore } from "firebase/firestore";
+
+// const firebaseConfig = {
+//     // api key
+//   apiKey: " ",         
+//     // domain        
+//   authDomain: " ", 
+//     // project id
+//   projectId: " ",             
+//   storageBucket: " ",
+//   messagingSenderId: " ",       
+//   appId: " ", 
+// };
+
+// const app = initializeApp(firebaseConfig);
+
+// export const auth = getAuth(app);
+// export const db = getFirestore(app);
