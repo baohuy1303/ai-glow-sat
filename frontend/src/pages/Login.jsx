@@ -129,7 +129,7 @@ function Login() {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
                     )}
-                    <button disabled={loading} type="submit" classnName="text-[#4e0bba]">
+                    <button disabled={loading} type="submit" className="text-[#4e0bba]">
                         {register ? 'Register' : 'Login'}{' '}
                         {loading && <span className="animate-spin">...</span>}
                     </button>
