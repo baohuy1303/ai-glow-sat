@@ -12,7 +12,7 @@ function UserLayout() {
     return (
         <div>
             <Navbar />
-            <h1>User Layout</h1>
+            {/* <h1>User Layout</h1> */}
             <Outlet />
         </div>
     )
