@@ -25,3 +25,7 @@ dist-ssr
 
 certs.json
 .env
+.env.local
+.env.production
+.env.development
+frontend/.env

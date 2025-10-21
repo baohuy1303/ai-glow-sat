@@ -9,6 +9,7 @@ import UserLayout from './layouts/UserLayout.jsx';
 import RoleRoutesCheck from './helper/RoleRoutesCheck.jsx';
 import AdminLayout from './layouts/AdminLayout.jsx';
 import Home from "./pages/Home.jsx";
+import QuestionBank from "./pages/QuestionBank.jsx";
 
 function App() {
     return (
@@ -43,7 +44,10 @@ function App() {
                     </Route>
 
                     {/* Default route - redirect to login for now*/}
-                    <Route path="/" element={<Navigate to="/login" replace />} />
+                    {/* !! UNCOMMENT THE BELOW LINE ONCE DONE EDITING THE HOME */}
+                    {/* <Route path="/" element={<Navigate to="/login" replace />} /> */}
+                    {/* <Route path="/" element={<Home />} /> */}
+                    <Route path="/" element={<QuestionBank />} />
                 </Routes>
             </AuthProvider>
 
