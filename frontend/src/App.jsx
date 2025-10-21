@@ -45,9 +45,9 @@ function App() {
 
                     {/* Default route - redirect to login for now*/}
                     {/* !! UNCOMMENT THE BELOW LINE ONCE DONE EDITING THE HOME */}
-                    {/* <Route path="/" element={<Navigate to="/login" replace />} /> */}
-                    {/* <Route path="/" element={<Home />} /> */}
-                    <Route path="/" element={<QuestionBank />} />
+                     <Route path="/login" element={<Navigate to="/login" replace />} />
+                     <Route path="/" element={<Home />} />
+                     <Route path="/question-bank" element={<QuestionBank />} />
                 </Routes>
             </AuthProvider>
 

@@ -1,4 +1,20 @@
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { useEffect } from 'react';
+
 export default function Home() {
+    const { currentUser, role } = useAuth();
+    const navigate = useNavigate();
+    useEffect(() => {
+        if(role === 'user') {
+            navigate('/user');
+        } else if(role === 'admin') {
+            navigate('/admin');
+        } else {
+            navigate('/login');
+        }
+    }, [role, navigate]);
+
     return (
       <div className="min-h-screen bg-gradient-to-b from-[#4e0bba] to-[#d8f405] flex flex-col items-center justify-center text-center text-white px-8">
         <h1 className="text-5xl font-bold mb-4">Welcome to AI Glow</h1>

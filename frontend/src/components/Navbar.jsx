@@ -15,6 +15,9 @@ export default function NavBar() {
           <a href="#" className="hover:underline">
             Upload Test
           </a>
+          <a href="/question-bank" className="hover:underline">
+            Question Bank
+          </a>
         </div>
   
         <div className="flex gap-4">
