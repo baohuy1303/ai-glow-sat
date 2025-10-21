@@ -1,24 +1,30 @@
-import logo from "../assets/aiglow_logo.png";
+import {useEffect} from "react";
 
-export default function Navbar() {
+export default function NavBar({menuOpen, setMenuOpen}) {
+    useEffect(() => {
+        document.body.style.overflowY = menuOpen ? "hidden" : "";
+    }, [menuOpen]);
+
     return (
-      <nav className="flex items-center justify-between px-10 py-4 bg-[#5B00D2] text-white">
-        {/* Logo */}
-        <img src={logo} alt="Login Background" className="w-13 max-w-md rounded shadow-lg"></img>
-  
-        {/* Navigation Links */}
-        <div className="flex gap-8 text-lg">
-          <a href="/" className="hover:underline">
-            Home
-          </a>
-          <a href="#" className="hover:underline">
-            Take Test
-          </a>
-          <a href="#" className="hover:underline">
-            Upload Test
-          </a>
+    <nav className ="fixed top-0 w-full z-40 bg-[#420414] backdrop-blur-lg border-b border-white/10 shadow-lg">
+        <div className = "max-w-5xl mx-auto px-4">
+            <div className="flex justify-between items-center h-16">
+                <a href="#home" className="font-mono text-xl font-bold text-white">
+                    {" "}
+                    ai<span className="text-red-300">glow</span>{" "}
+                </a>
+                <div className="w-7 h-5 relative cursor-pointer z-40 md:hidden" onClick={() => setMenuOpen((prev) => !prev)}>
+                    &#9776;
+                </div>
+
+                <div className="hidden md:flex items-center space-x-8">
+                    <a href="#home" className="text-gray-200 hover:text-white transition-colors">{""}Home{""}</a>
+                    <a href="#about" className="text-gray-200 hover:text-white transition-colors">{""}About{""}</a>
+                    <a href="#project" className="text-gray-200 hover:text-white transition-colors">{""}Project{""}</a>
+                    <a href="#contact" className="text-gray-200 hover:text-white transition-colors">{""}Contact{""}</a>
+                </div>
+            </div>
         </div>
-      </nav>
-    );
-  }
-  
+    </nav>
+    )
+}
