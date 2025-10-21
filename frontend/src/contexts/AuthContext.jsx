@@ -31,6 +31,7 @@ export function AuthProvider({ children }) {
             const credential = await createUserWithEmailAndPassword(auth, email, password);
             await setDoc(doc(db, 'users', credential.user.uid), {
                 role: 'user',
+                email: email,
             });
             await sendEmailVerification(credential.user);
             return credential;
