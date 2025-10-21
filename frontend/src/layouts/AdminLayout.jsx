@@ -13,7 +13,6 @@ function AdminLayout() {
     return (
         <div>
             <Navbar />
-            <h1>Admin Layout</h1>
             <Outlet />  
         </div>
     )
