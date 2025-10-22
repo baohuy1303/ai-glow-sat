@@ -99,7 +99,7 @@ class QuestionsList(RootModel[List[Question]]):
 parser = JsonOutputParser(pydantic_object=QuestionsList)
 
 def load_pdf():
-    loader = PyPDFLoader("TestData/TestPDFP1.pdf")
+    loader = PyPDFLoader("TestData/TestPDFP2.pdf")
     pages = loader.load()
 
     return pages
@@ -118,7 +118,6 @@ results = []
 
 for page in pages:
     result = chain.invoke({"context": page.page_content})
-    print(result)
     questions : QuestionsList = result
     results.extend(questions)
 
