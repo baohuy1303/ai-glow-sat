@@ -8,6 +8,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from enum import Enum
 from typing import List, Optional
+import json
 
 llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model_name="gpt-5-nano", temperature=0.0)
 
@@ -79,19 +80,20 @@ class Difficulty(str, Enum):
 class Option(BaseModel):
     label: str = Field(..., description="Option label (e.g., A, B, C, D)")
     text: str = Field(..., description="Text content of the option")
-    explanation: Optional[str] = Field(None, description="Explanation for the option if available")
+    explanation: str = Field(None, description="Explanation for the option. If there is no explanation, return none.")
+
 
 class Question(BaseModel):
-    section: str = Field(..., description="Question section name or category")
-    domain: Optional[Domain] = Field(None, description="The domain or topic of the question")
-    skill: Optional[Skill] = Field(None, description="The skill tested by the question")
-    difficulty: Optional[Difficulty] = Field(None, description="The difficulty level of the question")
-    type: QuestionType = Field(description="The type of question")
+    section: Section = Field(..., description="Question section name or category")
+    domain: Domain = Field(None, description="The domain or topic of the question. If there is no domain on the PDF, try to infer it from the question and passage. Else return none")
+    skill: Skill = Field(None, description="The skill tested by the question. If there is no skill on the PDF, try to infer it from the question and passage. Else return none")
+    difficulty: Difficulty = Field(None, description="The difficulty level of the question. If there is no difficulty on the PDF, try to infer it from the question and passage. Else return none")
+    type: QuestionType = Field(None, description="The type of question. If there is no type on the PDF, try to infer it from the question and passage. Else return none")
     passage: str = Field(..., description="Associated passage or text for the question")
-    imagePage: Optional[str] = Field(None, description="Page number of the image on the pdf if question contains an image") 
+    imagePage: str = Field(None, description="Page number of the image on the pdf if question contains an image. If there is no image, return none.") 
     questionText: str = Field(..., description="Main question text")
-    options: Optional[List[Option]] = Field(None, description="List of answer options")
-    correctAnswer: str = Field(..., description="Correct answer label or text")
+    options: List[Option] = Field(None, description="List of answer options. If there is no options, return none.")
+    correctAnswer: str = Field(None, description="Correct answer label or text. If there is no correct answer, return none.")
 
 class QuestionsList(RootModel[List[Question]]):
     root: List[Question]
@@ -99,7 +101,7 @@ class QuestionsList(RootModel[List[Question]]):
 parser = JsonOutputParser(pydantic_object=QuestionsList)
 
 def load_pdf():
-    loader = PyPDFLoader("TestData/TestPDFP2.pdf")
+    loader = PyPDFLoader("TestData/TestPDFP4.pdf")
     pages = loader.load()
 
     return pages
@@ -121,6 +123,7 @@ for page in pages:
     questions : QuestionsList = result
     results.extend(questions)
 
-print(results)
+valid_json_str = json.dumps(results, ensure_ascii=False, indent=2)
+print(valid_json_str)
 
 #print(result)
