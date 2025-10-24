@@ -7,6 +7,7 @@ const questionSchema = z.object({
     difficulty: z.string().optional(),
     type: z.string(),
     passage: z.string(),
+    image: z.string().optional(), // image url
     questionText: z.string(),
     options: z.array(
         z.object({
@@ -14,7 +15,7 @@ const questionSchema = z.object({
             text: z.string(),
             explanation: z.string().optional(),
         })
-    ),
+    ).optional(),
     correctAnswer: z.string(),
     aiInsights: z.array(
       z.object({
