@@ -89,7 +89,7 @@ class Question(BaseModel):
     skill: Skill = Field(None, description="The skill tested by the question. If there is no skill on the PDF, try to infer it from the question and passage. Else return none")
     difficulty: Difficulty = Field(None, description="The difficulty level of the question. If there is no difficulty on the PDF, try to infer it from the question and passage. Else return none")
     type: QuestionType = Field(None, description="The type of question. If there is no type on the PDF, try to infer it from the question and passage. Else return none")
-    passage: str = Field(..., description="Associated passage or text for the question")
+    passage: Optional[str] = Field(None, description="Associated passage or text for the question. If there is no passage (e.g. math questions), return null.")
     imagePage: str = Field(None, description="Page number of the image on the pdf if question contains an image. If there is no image, return none.") 
     questionText: str = Field(..., description="Main question text")
     options: List[Option] = Field(None, description="List of answer options. If there is no options, return none.")
@@ -101,17 +101,31 @@ class QuestionsList(RootModel[List[Question]]):
 parser = JsonOutputParser(pydantic_object=QuestionsList)
 
 def load_pdf():
-    loader = PyPDFLoader("TestData/TestPDFP4.pdf")
+    loader = PyPDFLoader("TestData/Test2PDF_1.pdf")
     pages = loader.load()
 
     return pages
 
 prompt = PromptTemplate(
-    template="Extract all questions from the following text. Return the questions in a list of questions. \n{format_instructions}\n{context}",
+    template=(
+        "You are a question parser and classifier. Your task is to extract SAT-style questions "
+        "from the given text and fill in missing fields by reasoning from the question and passage.\n\n"
+        "Instructions:\n"
+        "- Extract all questions in the text.\n"
+        "- If the PDF does not specify a field (like domain, skill, difficulty, etc.), infer it logically.\n"
+        "- For 'difficulty', use EASY, MEDIUM, or HARD depending on the question complexity.\n"
+        "- If the question does NOT include a passage (common in math), set 'passage' to null.\n"
+        "- If the question is short-answer (no options), set `type` to 'short_answer' and `options` to null.\n"
+        "- If the question is multiple-choice, extract all answer choices (A, B, C, D, etc.).\n"
+        "- If no correct answer is given, predict the most likely correct one based on reasoning.\n"
+        "- If explanations are missing, generate short explanations for each option.\n"
+        "- If the passage refers to an image, include `imagePage` as the page number, else set to null.\n\n"
+        "{format_instructions}\n\n"
+        "Text:\n{context}"
+    ),
     input_variables=["context"],
     partial_variables={"format_instructions": parser.get_format_instructions()},
 )
-
 pages = load_pdf()
 
 chain = prompt | llm | parser
@@ -124,6 +138,8 @@ for page in pages:
     results.extend(questions)
 
 valid_json_str = json.dumps(results, ensure_ascii=False, indent=2)
-print(valid_json_str)
-
-#print(result)
+output_dir = "TestRes"
+os.makedirs(output_dir, exist_ok=True)
+output_path = os.path.join(output_dir, "questions1_2.json")
+with open(output_path, "w", encoding="utf-8") as f:
+    f.write(valid_json_str)

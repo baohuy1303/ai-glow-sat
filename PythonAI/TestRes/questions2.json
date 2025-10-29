@@ -1,0 +1,80 @@
+[
+  {
+    "section": "math",
+    "domain": "algebra",
+    "skill": "linear_functions",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "passage": null,
+    "imagePage": null,
+    "questionText": "If f (x) = x + 7 and g(x) = 7x, what is the value of 4f (2) - g(2)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "-5",
+        "explanation": "This is the value of f(2) - g(2), not 4f(2) - g(2)."
+      },
+      {
+        "label": "B",
+        "text": "1",
+        "explanation": "This may result from calculating 4f(2) as 4(2) + 7, rather than 4(2 + 7)."
+      },
+      {
+        "label": "C",
+        "text": "22",
+        "explanation": "Correct calculation: f(2) = 9, g(2) = 14, so 4f(2) - g(2) = 4×9 - 14 = 22."
+      },
+      {
+        "label": "D",
+        "text": "28",
+        "explanation": "Could come from arithmetic errors."
+      }
+    ],
+    "correctAnswer": "C"
+  },
+  {
+    "section": "math",
+    "domain": "algebra",
+    "skill": "linear_equations_in_two_variables",
+    "difficulty": "easy",
+    "type": "short_answer",
+    "passage": null,
+    "imagePage": null,
+    "questionText": "The y-intercept of the graph of y = -6x - 32 in the xy-plane is (0, y). What is the value of y?",
+    "options": null,
+    "correctAnswer": "-32"
+  },
+  {
+    "section": "math",
+    "domain": "algebra",
+    "skill": "linear_functions",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "passage": null,
+    "imagePage": null,
+    "questionText": "The graph of the function f, where y = f (x), models the total cost y, in dollars, for a certain video game system and x games. What is the best interpretation of the slope of the graph in this context?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Each game costs $25.",
+        "explanation": "The slope of a cost vs. number of games represents the per-game cost."
+      },
+      {
+        "label": "B",
+        "text": "The video game system costs $100.",
+        "explanation": "The intercept would reflect the system cost, not the slope."
+      },
+      {
+        "label": "C",
+        "text": "The video game system costs $25.",
+        "explanation": "Confuses intercept with slope."
+      },
+      {
+        "label": "D",
+        "text": "Each game costs $100.",
+        "explanation": "Per-game cost would be $25, not $100."
+      }
+    ],
+    "correctAnswer": "A"
+  }
+]

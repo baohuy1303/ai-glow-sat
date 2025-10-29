@@ -1,0 +1,30 @@
+[
+  {
+    "section": "reading_and_writing",
+    "passage": "Georgia Tech roboticists De’Aira Bryant and Ayanna Howard, along with ethicist Jason Borenstein, were interested in people’s perceptions of robots’ competence. They recruited participants and asked them how likely they think it is that a robot could do the work required in various occupations. Participants’ evaluations varied widely depending on which occupation was being considered; for example, ______\n\nRows in table may not add up to 100 due to rounding.",
+    "questionText": "Which choice most effectively uses data from the table to complete the example?",
+    "options": [
+      {
+        "label": "A",
+        "text": "82% of participants believe that it is somewhat or very likely that a robot could work effectively as a tour guide, but only 16% believe that it is somewhat or very likely that a robot could work as a surgeon.",
+        "explanation": null
+      },
+      {
+        "label": "B",
+        "text": "47% of participants believe that it is somewhat or very likely that a robot could work effectively as a teacher, but 37% of respondents believe that it is somewhat or very unlikely that a robot could do so.",
+        "explanation": null
+      },
+      {
+        "label": "C",
+        "text": "9% of participants were neutral about whether a robot could work effectively as a television news anchor, which is the same percent of participants who were neutral when asked about a robot working as a surgeon.",
+        "explanation": null
+      },
+      {
+        "label": "D",
+        "text": "62% of participants believe that it is somewhat or very unlikely that a robot could work effectively as a firefighter.",
+        "explanation": null
+      }
+    ],
+    "correctAnswer": "A"
+  }
+]

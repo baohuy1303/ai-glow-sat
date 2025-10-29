@@ -1,0 +1,66 @@
+[
+  {
+    "section": "reading_and_writing",
+    "domain": "standard_english_conventions",
+    "skill": "word_in_context",
+    "difficulty": "easy",
+    "passage": "Handedness, a preferential use of either the right or left hand, typically is easy to observe in humans. Because this trait is present but less _______ in many other animals, animal-behavior researchers often employ tasks specially designed to reveal individual animals’ preferences for a certain hand or paw.",
+    "questionText": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": [
+      {
+        "label": "A",
+        "text": "recognizable",
+        "explanation": "Fits the context: handedness is present but less recognizable in many animals, making it harder to observe without specialized tasks."
+      },
+      {
+        "label": "B",
+        "text": "intriguing",
+        "explanation": "Does not leverage the idea of observability; 'intriguing' focuses on interest, not observability."
+      },
+      {
+        "label": "C",
+        "text": "significant",
+        "explanation": "Would alter the meaning to imply importance rather than observability; not the best fit."
+      },
+      {
+        "label": "D",
+        "text": "useful",
+        "explanation": "While plausible, it doesn't best capture the sense of observability/predictability in a comparative context."
+      }
+    ],
+    "correctAnswer": "A",
+    "imagePage": null
+  },
+  {
+    "section": "reading_and_writing",
+    "domain": "standard_english_conventions",
+    "skill": "word_in_context",
+    "difficulty": "easy",
+    "passage": "It is by no means _______ to recognize the influence of Dutch painter Hieronymus Bosch on Ali Banisadr’s paintings; indeed, Banisadr himself cites Bosch as an inspiration. However, some scholars have suggested that the ancient Mesopotamian poem Epic of Gilgamesh may have had a far greater impact on Banisadr’s work.",
+    "questionText": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": [
+      {
+        "label": "A",
+        "text": "substantial",
+        "explanation": "'Not substantial' sounds odd in this context; it does not fit the common idiom as naturally as the other options."
+      },
+      {
+        "label": "B",
+        "text": "satisfying",
+        "explanation": "Does not convey the intended meaning of importance or significance regarding recognizing influence."
+      },
+      {
+        "label": "C",
+        "text": "unimportant",
+        "explanation": "Completes the common phrase 'It is by no means unimportant to recognize...' meaning it is important to recognize the influence."
+      },
+      {
+        "label": "D",
+        "text": "appropriate",
+        "explanation": "While plausible, it does not express the emphasis on importance as clearly as 'unimportant' in this context."
+      }
+    ],
+    "correctAnswer": "C",
+    "imagePage": null
+  }
+]

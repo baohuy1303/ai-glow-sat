@@ -1,0 +1,68 @@
+[
+  {
+    "section": "reading_and_writing",
+    "domain": "craft_and_structure",
+    "skill": "word_in_context",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "passage": "Handedness, a preferential use of either the right or left hand, typically is easy to observe in humans. Because this trait is present but less _______ in many other animals, animal-behavior researchers often employ tasks specially designed to reveal individual animals’ preferences for a certain hand or paw.",
+    "imagePage": null,
+    "questionText": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": [
+      {
+        "label": "A",
+        "text": "recognizable",
+        "explanation": "The passage suggests a trait that is visible or noticeable; 'recognizable' fits best."
+      },
+      {
+        "label": "B",
+        "text": "intriguing",
+        "explanation": "Does not address visibility or observability."
+      },
+      {
+        "label": "C",
+        "text": "significant",
+        "explanation": "Implies importance, not readability in animals."
+      },
+      {
+        "label": "D",
+        "text": "useful",
+        "explanation": "Relates to utility, not visibility."
+      }
+    ],
+    "correctAnswer": "A"
+  },
+  {
+    "section": "reading_and_writing",
+    "domain": "craft_and_structure",
+    "skill": "word_in_context",
+    "difficulty": "easy",
+    "type": "multiple_choice",
+    "passage": "It is by no means _______ to recognize the influence of Hieronymus Bosch on Ali Banisadr’s paintings; indeed, Banisadr himself cites Bosch as an inspiration. However, some scholars have suggested that the ancient Mesopotamian poem Epic of Gilgamesh may have had a far greater impact on Banisadr’s work.",
+    "imagePage": null,
+    "questionText": "Which choice completes the text with the most logical and precise word or phrase?",
+    "options": [
+      {
+        "label": "A",
+        "text": "substantial",
+        "explanation": "Unlikely; 'It is by no means substantial to recognize' sounds odd."
+      },
+      {
+        "label": "B",
+        "text": "satisfying",
+        "explanation": "Does not fit meaning."
+      },
+      {
+        "label": "C",
+        "text": "unimportant",
+        "explanation": "Correct; yields natural phrase 'It is by no means unimportant to recognize'."
+      },
+      {
+        "label": "D",
+        "text": "appropriate",
+        "explanation": "Does not fit meaning."
+      }
+    ],
+    "correctAnswer": "C"
+  }
+]
