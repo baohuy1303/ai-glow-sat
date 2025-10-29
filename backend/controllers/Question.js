@@ -25,15 +25,4 @@ const getQuestions = async (req, res) => {
     }
 }
 
-const pdfToQuestions = async (req, res) => {
-    const { pdf } = req.files;
-    try {
-        const questions = await db.collection("questions").get();
-        res.status(200).json(questions.docs.map(doc => doc.data()));
-    } catch (err) {
-        console.log(err);
-        res.status(500).send("Error getting questions");
-    }
-}
-
 module.exports = { createQuestion, getQuestions };
