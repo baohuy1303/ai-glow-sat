@@ -95,23 +95,30 @@ function EmailVerification() {
         <div className="flex flex-col items-center justify-center h-screen w-screen gap- text-black">
             <div className="bg-gray-500 p-8 rounded-lg shadow-lg max-w-md w-full">
                 <div className="text-center mb-6">
-                    <h1 className="text-2xl font-bold text-white mb-2">Verify Your Email</h1>
+                    <h1 className="text-2xl font-bold text-white mb-2">
+                        Verify Your Email
+                    </h1>
                     <p className="text-gray-300">
-                        We've sent a verification email to <strong>{currentUser.email}</strong>
+                        We've sent a verification email to{' '}
+                        <strong>{currentUser.email}</strong>
                     </p>
                 </div>
 
                 <div className="space-y-4">
                     <p className="text-sm text-gray-400 text-center">
-                        Please check your email and click the verification link to activate your account.
+                        Please check your email and click the verification link
+                        to activate your account.
                     </p>
 
                     {message && (
-                        <div className={`p-3 rounded-md text-sm ${
-                            message.includes('Error') || message.includes('not yet verified') 
-                                ? 'bg-red-100 text-red-700' 
-                                : 'bg-green-100 text-green-700'
-                        }`}>
+                        <div
+                            className={`p-3 rounded-md text-sm ${
+                                message.includes('Error') ||
+                                message.includes('not yet verified')
+                                    ? 'bg-red-100 text-red-700'
+                                    : 'bg-green-100 text-green-700'
+                            }`}
+                        >
                             {message}
                         </div>
                     )}
@@ -120,17 +127,21 @@ function EmailVerification() {
                         <button
                             onClick={handleCheckVerification}
                             disabled={isChecking}
-                            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-black font-medium py-2 px-4 rounded-md transition-colors"
+                            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-2 px-4 rounded-md transition-colors"
                         >
-                            {isChecking ? 'Checking...' : 'I\'ve Verified My Email'}
+                            {isChecking
+                                ? 'Checking...'
+                                : "I've Verified My Email"}
                         </button>
 
                         <button
                             onClick={handleResendVerification}
                             disabled={isResending}
-                            className="w-full bg-gray-600 hover:bg-gray-700 disabled:bg-gray-400 text-black font-medium py-2 px-4 rounded-md transition-colors"
+                            className="w-full bg-gray-600 hover:bg-gray-700 disabled:bg-gray-400 text-white font-medium py-2 px-4 rounded-md transition-colors"
                         >
-                            {isResending ? 'Sending...' : 'Resend Verification Email'}
+                            {isResending
+                                ? 'Sending...'
+                                : 'Resend Verification Email'}
                         </button>
                     </div>
 
@@ -141,7 +152,6 @@ function EmailVerification() {
                         >
                             Back to Login
                         </button>
-
                     </div>
                 </div>
             </div>
